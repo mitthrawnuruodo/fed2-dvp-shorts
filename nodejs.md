@@ -384,4 +384,4 @@ Now **refresh your browser**, and see the changes (both in the Browser and the T
 
 Last tip: You can also use [Postman](https://www.postman.com/) to look at the data: 
 
-![h:560px](../media/postman-node.png)
+![h:560px](media/postman-node.png)

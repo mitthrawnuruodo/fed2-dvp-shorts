@@ -225,7 +225,7 @@ Server running on http://localhost:3001
 
 Click (or copy/paste) the link and open it in your browser.
 
-![](../media/node-express.png)
+![](media/node-express.png)
 
 Test the app:
 * Navigate to **About**
