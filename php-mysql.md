@@ -2,7 +2,7 @@
 # PHP and MySQL with MAMP (or XAMPP)
 
 <!--![](media/337753114_164911129804407_1998992232480221139_n.jpg)-->
-<img src="media/337753114_164911129804407_1998992232480221139_n.jpg" style="max-width: 390px;">
+<img src="media/337753114_164911129804407_1998992232480221139_n.jpg" width="390">
 
 ## Introduction to PHP
 
