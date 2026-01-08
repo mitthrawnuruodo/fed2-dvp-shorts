@@ -73,6 +73,7 @@ Normally one of two things:
 2. The browser treats it like a text file and shows it with tags and all (PHP and HTML): 
 
 ![](media/php-opened-in-safari.png)
+<!-- @TODO: Swap this for a better image -->
 
 This is because you need to run the PHP file through a web server that supports PHP.
 
