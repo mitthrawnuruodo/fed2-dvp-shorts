@@ -232,7 +232,7 @@ echo $x + $y;
 
 **Notice**: `.` is used for string concatenation, not `+` that JS uses. PHP treats `+` as a numeric operator only.
 
-<!-- _footer: "[String Operators](https://www.php.net/manual/en/language.operators.string.php)" -->
+[String Operators](https://www.php.net/manual/en/language.operators.string.php)
 
 ### The PHP print Statement
 The print statement can *also* be used with or without parentheses: `print` or `print()`.
@@ -433,7 +433,7 @@ echo addNumbers(5, "5 days"); // 10
 ```
 
 > "5 days" is changed to int(5), and thus `addNumbers(5, "5 days")` return 10, 
-> use *strict mode* in PHP 7+ and set data types if you want to prevent this.
+> use *strict mode* in PHP 7+ and set data types if you want to *prevent* this.
 
 ## PHP Arrays
 
@@ -482,7 +482,7 @@ Including files is very useful when you want to include the same PHP, HTML, or t
 
 Example: 
 
-Make three files: `home.php`, `about.php` and `header.php`:
+Make three additional files in your MAMP (XAMPP) folder: `home.php`, `about.php` and `header.php`:
 
 ### home.php
 
@@ -557,7 +557,7 @@ Make three files: `home.php`, `about.php` and `header.php`:
 </nav>
 ```
 
-Open the Home file and use the menu to navigate to About and back, and notice how the menu changes.
+Open the Home file (you may need to navigate to http://localhost:8888/home.php or similar, if you have an index.php file in your MAMP root folder) and use the menu list to navigate to About and back; and notice how the "dot" in the menu list changes colour.
 
 ## PHP Global Variables - Superglobals
 
