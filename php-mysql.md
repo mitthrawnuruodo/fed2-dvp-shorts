@@ -2,8 +2,7 @@
 # PHP and MySQL with MAMP (or XAMPP)
 
 <!--![](media/337753114_164911129804407_1998992232480221139_n.jpg)-->
-<img src="media/337753114_164911129804407_1998992232480221139_n.jpg" width="50%">
-
+<img src="media/337753114_164911129804407_1998992232480221139_n.jpg" style="max-width: 390px;">
 
 ## Introduction to PHP
 
@@ -11,8 +10,8 @@
 
 PHP was created by Danish-Canadian programmer **Rasmus Lerdorf** in 1994, and launched as Personal Home Page Tools (PHP Tools) version 1.0 on June 8, 1995.
 
-
-![](media/Webysther_20160423_-_Elephpant.svg.png)
+<!--![](media/Webysther_20160423_-_Elephpant.svg.png)-->
+<img src="media/Webysther_20160423_-_Elephpant.svg.png" width="180px">
 
 [PHP @ Wikipedia](https://en.wikipedia.org/wiki/PHP)
 
