@@ -90,7 +90,7 @@ Now start up MAMP (or XAMMP) and Start Apache.
 From the `localhost:8888/MAMP/` page Goto "My Website" 
 <small>(or just navigate to `localhost:8888` (MAMP) or `localhost` without the port (XAMPP))</small>
 
-## Example explained
+## "Hello, world" example explained
 
 ```php
 <?php 
@@ -107,8 +107,6 @@ The PHP code is enclosed in special start and end processing instructions
 
 **Note**: PHP statements end with a semicolon, `;`. As opposed to JavaScript this is mandatory (in almost all cases),
 
-
-
 ## PHP Case Sensitivity
 In PHP, keywords (e.g. if, else, while, echo, etc.), classes, functions, and user-defined functions are not case-sensitive.
 
@@ -121,8 +119,6 @@ echo "Hello World!<br>";
 EcHo "Hello World!<br>";
 ?>
 ```
-
-## PHP Case Sensitivity
 
 **Note**: However, all variable names are case-sensitive!
 
@@ -151,7 +147,7 @@ $y = 10.5;
 
 > Unlike other programming languages, PHP has no command for declaring a variable. It is created the moment you first assign a value to it.
 
-# Rules for PHP variables:
+### Rules for PHP variables:
 
 * A variable starts with the `$` sign, followed by the name of the variable
 * A variable name must start with a letter or the underscore character
@@ -166,6 +162,8 @@ In the example above, notice that we did not have to tell PHP which data type th
 PHP automatically associates a data type to the variable, depending on its value. Since the data types are not set in a strict sense, you can do things like adding a string to an integer without causing an error.
 
 In **PHP 7**, type declarations were added. This gives an option to specify the data type expected when declaring a function, and by enabling the `strict` requirement, it will throw a "Fatal Error" on a type mismatch.
+
+[PHP `strict_types` tutorial](https://www.phptutorial.net/php-tutorial/php-strict_types/).
 
 ## Comments
 
@@ -186,7 +184,7 @@ PHP supports 'C', 'C++' and Unix shell-style (Perl style) comments. For example:
 <p>The header above will say 'This is an  example'.</p>
 ```
 
-## PHP echo and print Statements
+## PHP `echo` and `print` Statements
 
 `echo` and `print` are more or less the same. They are both used to output data to the screen.
 
@@ -212,10 +210,6 @@ echo "This ", "string ", "was ", "made ", "with multiple parameters.";
 // I'm about to learn PHP!<br>
 // This string was made with multiple parameters.
 ```
-<!-- _header: "" -->
-### The PHP echo Statement, cont. 
-
-<small>
 
 The following example shows how to output text and variables with the echo statement:
 ```php
@@ -235,9 +229,7 @@ echo $x + $y;
 // 9
 ```
 
-> Note: `.` is used for string concatenation
-
-</small>
+**Notice**: `.` is used for string concatenation, not `+` that JS uses. PHP treats `+` as a numeric operator only.
 
 <!-- _footer: "[String Operators](https://www.php.net/manual/en/language.operators.string.php)" -->
 
@@ -257,8 +249,6 @@ print "I'm about to learn PHP!";
 // Hello world!<br>
 // I'm about to learn PHP!
 ```
-
-### The PHP print Statement, cont.
 
 The following example shows how to output text and variables with the print statement:
 
@@ -293,29 +283,26 @@ PHP supports the following data types:
 * NULL
 * Resource
 
-## PHP Data Types, cont.
-
 The special **resource** type is not an actual data type. It is the storing of a reference to functions and resources external to PHP.
 
 A common example of using the resource data type is a **database call**. 
 
-<!-- _header: "" -->
+
 ## PHP `var_dump()` Function
 
-<small>The `var_dump()` function dumps information (type and value) about one or more variables:</small>
+`var_dump()` is used to **inspect a variable’s type, value, and structure**, mainly for debugging:
 
-<small style="font-size: 1.2rem">
 
 ```php
 <?php
-$a = 32;
-echo var_dump($a) . "<br>"; // int(32) 
+$a = 42;
+echo var_dump($a) . "<br>"; // int(42) 
 
 $b = "Hello world!";
 echo var_dump($b) . "<br>"; // string(12) "Hello world!" 
 
-$c = 32.5;
-echo var_dump($c) . "<br>"; // float(32.5) 
+$c = 3.14;
+echo var_dump($c) . "<br>"; // float(3.14) 
 
 $d = array("red", "green", "blue");
 echo var_dump($d) . "<br>";
@@ -331,7 +318,14 @@ echo var_dump($a, $b) . "<br>"; // int(32) string(12) "Hello world!"
 ?>
 ```
 
-</small>
+It shows:
+* the data type
+* the value
+* lengths of strings
+* contents of arrays and objects (recursively)
+
+In short: it is PHP’s blunt but very reliable debugging microscope.
+
 
 ## PHP Conditional Statements
 
@@ -342,7 +336,7 @@ In PHP we have the following conditional statements:
 * `if...elseif...else` statement - executes different codes for more than two conditions
 * `switch` statement - selects one of many blocks of code to be executed
 
-### PHP Conditional Statements, an example
+### PHP Conditional Statements, a basic example
 
 ```php
 <?php
@@ -358,9 +352,9 @@ if ($t < "10") {
 ?>
 ```
 
-<!-- _footer: "[date](https://www.php.net/manual/en/function.date.php) / [DateTime::format](https://www.php.net/manual/en/datetime.format.php)" -->
+<small>Docs for the [date](https://www.php.net/manual/en/function.date.php) and [DateTime::format](https://www.php.net/manual/en/datetime.format.php).</small>
 
-### PHP Conditional Statements, another example
+### PHP alternative control structure syntax
 
 Advanced escaping using conditions:
 ```php
@@ -378,7 +372,8 @@ In this example PHP will skip the blocks where the condition is not met, even th
 
 PHP skips them according to the condition since the PHP interpreter will jump over blocks contained within a condition that is not met.
 
-<!-- _header: "" -->
+This syntax is common in templates and view files, and rare in pure logic-heavy PHP code.
+
 ## PHP Loops
 
 In PHP, we have the following loop types:
@@ -388,9 +383,34 @@ In PHP, we have the following loop types:
 * `for` - loops through a block of code a specified number of times
 * `foreach` - loops through a block of code for each element in an array
 
-> Loops are used to execute the same block of code again and again, as long as a certain condition is true.
+Loops are used to execute the same block of code again and again, as long as a certain condition is true.
+
+```php
+<?php
+// while loop
+$i = 1;
+while ($i <= 3) {
+    echo $i;
+    $i++;
+}
+// Output: 123
+
+// for loop
+for ($j = 1; $j <= 3; $j++) {
+    echo $j;
+}
+// Output: 123
+
+// foreach loop
+$colors = ["red", "green", "blue"];
+foreach ($colors as $color) {
+    echo $color;
+}
+// Output: redgreenblue
+```
 
 ## PHP User Defined Functions
+
 Besides the [built-in PHP functions](https://www.w3schools.com/php/php_ref_overview.asp), it is possible to create your own functions.
 
 * A function is a block of statements that can be used repeatedly in a program.
@@ -407,13 +427,12 @@ function addNumbers($a, $b = 12) {
 }
 echo addNumbers(3, 4); // 7 
 echo addNumbers(1); // 13
-echo addNumbers(5, "5 days"); 
-// "5 days" is changed to int(5), 
-// and it will return 10
-// use strict mode in PHP 7+
-// and set data types to prevent this
+echo addNumbers(5, "5 days"); // 10
 ?>
 ```
+
+> "5 days" is changed to int(5), and thus `addNumbers(5, "5 days")` return 10, 
+> use *strict mode* in PHP 7+ and set data types if you want to prevent this.
 
 ## PHP Arrays
 
@@ -425,10 +444,32 @@ In PHP, the `array()` function is used to create an array; of which there are th
 
 The `count()` function is used to return the length (the number of elements) of an array.
 
+Examples:
+
 ```php
 <?php
+// Indexed array
 $fruits = array("Apple", "Banana", "Orange");
-echo count($fruits); // 3
+echo $fruits[0];       // Apple
+echo count($fruits);   // 3
+
+// Associative array
+$prices = array(
+    "Apple" => 10,
+    "Banana" => 8,
+    "Orange" => 12
+);
+echo $prices["Banana"]; // 8
+echo count($prices);    // 3
+
+// Multidimensional array
+$inventory = array(
+    array("Apple", 10),
+    array("Banana", 8),
+    array("Orange", 12)
+);
+echo $inventory[2][0]; // Orange
+echo count($inventory); // 3
 ?>
 ```
 
@@ -440,7 +481,7 @@ Including files is very useful when you want to include the same PHP, HTML, or t
 
 Example: 
 
-Make three files: `home.php`, `about.php` and `header.php`
+Make three files: `home.php`, `about.php` and `header.php`:
 
 ### home.php
 
@@ -489,7 +530,6 @@ Make three files: `home.php`, `about.php` and `header.php`
 
 ```
 
-
 ### header.php
 
 ```php
@@ -516,6 +556,8 @@ Make three files: `home.php`, `about.php` and `header.php`
 </nav>
 ```
 
+Open the Home file and use the menu to navigate to About and back, and notice how the menu changes.
+
 ## PHP Global Variables - Superglobals
 
 Some predefined variables in PHP are "superglobals", which means that they are always accessible, regardless of scope - and you can access them from any function, class or file without having to do anything special.
@@ -531,8 +573,6 @@ The PHP superglobal variables are: `$GLOBALS`, `$_SERVER`, `$_REQUEST`, `$_POST`
 [`$_GET`](https://www.php.net/manual/en/reserved.variables.get.php) is used to collect form data after submitting an HTML form with method="get". `$_GET` can also collect data sent in the URL.
 
 ### A very simple form example 
-
-<small>
 
 ```php
 <!DOCTYPE html>
@@ -556,11 +596,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>
 ```
 
-</small>
+[`empty`](https://www.php.net/manual/en/function.empty): checks whether a variable is empty or not set.
 
-<!--  _footer: "[`empty`](https://www.php.net/manual/en/function.empty): Determine whether a variable is empty" -->
+It returns true if the value is considered empty, for example:
+* "" (empty string)
+* 0 or "0"
+* false
+* null
+* [] (empty array)
+* or a variable that does not exist
 
-# phpinfo
+> PHP’s `empty()` is *stricter and more explicit* than JavaScript truthiness.
+
+## phpinfo
 
 `phpinfo()` is commonly used to check configuration settings and for available predefined variables on a given system.
 
@@ -576,14 +624,16 @@ phpinfo();
 phpinfo(INFO_MODULES);
 ?>
 ```
-<!-- _footer: "[phpinfo](https://www.php.net/manual/en/function.phpinfo.php)" -->
+[phpinfo](https://www.php.net/manual/en/function.phpinfo.php)
 
-![h:580px](media/phpinfo-1.png)
+**Tip**: In MAMP you can access `phpinfo` right from your start page, from the MAMP Tools menu:
 
-<!-- _footer: "**phpinfo** is also available from the MAMP Tools menu" -->
+![](media/phpinfo-1.png)
 
 
-# MySQL
+---
+
+## MySQL
 <!-- https://en.wikipedia.org/wiki/MySQL -->
 <!-- https://www.w3schools.com/mysql/ -->
 
