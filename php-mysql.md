@@ -75,7 +75,9 @@ Normally one of two things:
 ![](media/php-opened-in-safari.png)
 <!-- @TODO: Swap this for a better image -->
 
-This is because you need to run the PHP file through a web server that supports PHP.
+This is because you need to run the PHP file through a web server, one  that supports PHP.
+
+VS Code's Live Server does not support that, so this is where MAMP (XAMPP) comes in, and with the added bonus of including a working MySQL database and phpMyAdmin. More on that later.
 
 ## Set up MAMP (or XAMPP)
 
