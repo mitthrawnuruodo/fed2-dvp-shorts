@@ -697,7 +697,7 @@ DELETE | DELETE | DELETE
 `DROP INDEX` - deletes an index
 
 
-# phpMyAdmin
+## phpMyAdmin
 
 phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL over the Web. phpMyAdmin supports a wide range of operations on MySQL and MariaDB. 
 
@@ -942,7 +942,7 @@ WHERE
 
 ![](media/select-where7.png)
 
-### Operators, summary
+#### Operators, summary
 
 Operator|Description
 ---|---
@@ -1168,16 +1168,14 @@ So the result shows a Customer column like:
 
 ## Sources and resources
 
-[Getting Started with PHP](https://www.php.net/manual/en/getting-started.php)
-[PHP Language Reference](https://www.php.net/manual/en/langref.php)
-
-[PHP Tutorial](https://www.w3schools.com/php/default.asp)
-[PHP Reference Overview](https://www.w3schools.com/php/php_ref_overview.asp)
-[PHP String Functions](https://www.w3schools.com/php/php_ref_string.asp)
-[PHP Numbers](https://www.w3schools.com/php/php_numbers.asp)
-[PHP Math Functions](https://www.w3schools.com/php/php_ref_math.asp)
-[PHP Array Functions](https://www.w3schools.com/php/php_ref_array.asp)
-[PHP Operators](https://www.w3schools.com/php/php_operators.asp)
-
-[PHP Form Handling](https://www.w3schools.com/php/php_forms.asp)
-[PHP MySQL Database](https://www.w3schools.com/php/php_mysql_intro.asp)
+* [Getting Started with PHP](https://www.php.net/manual/en/getting-started.php)
+* [PHP Language Reference](https://www.php.net/manual/en/langref.php)
+* [PHP Tutorial](https://www.w3schools.com/php/default.asp)
+* [PHP Reference Overview](https://www.w3schools.com/php/php_ref_overview.asp)
+* [PHP String Functions](https://www.w3schools.com/php/php_ref_string.asp)
+* [PHP Numbers](https://www.w3schools.com/php/php_numbers.asp)
+* [PHP Math Functions](https://www.w3schools.com/php/php_ref_math.asp)
+* [PHP Array Functions](https://www.w3schools.com/php/php_ref_array.asp)
+* [PHP Operators](https://www.w3schools.com/php/php_operators.asp)
+* [PHP Form Handling](https://www.w3schools.com/php/php_forms.asp)
+* [PHP MySQL Database](https://www.w3schools.com/php/php_mysql_intro.asp)
