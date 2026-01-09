@@ -1,5 +1,5 @@
 
-# PHP and MySQL with MAMP (or XAMPP)
+# Introduction to PHP and MySQL and phpMyAdmin with MAMP (or XAMPP)
 
 <!--![](media/337753114_164911129804407_1998992232480221139_n.jpg)-->
 <img src="media/337753114_164911129804407_1998992232480221139_n.jpg" width="390">
@@ -13,7 +13,7 @@ PHP was created by Danish-Canadian programmer **Rasmus Lerdorf** in 1994, and la
 <!--![](media/Webysther_20160423_-_Elephpant.svg.png)-->
 <img src="media/Webysther_20160423_-_Elephpant.svg.png" width="180px">
 
-[PHP @ Wikipedia](https://en.wikipedia.org/wiki/PHP)
+[Wikipedia: PHP](https://en.wikipedia.org/wiki/PHP)
 
 ## How does PHP work?
 
@@ -69,7 +69,7 @@ Make an `example.php` file in your local folder:
 Open it in your browser, what happens?
 
 Normally one of two things: 
-1. The browser downloads the file...
+1. The browser downloads the file, or
 2. The browser treats it like a text file and shows it with tags and all (PHP and HTML): 
 
 ![](media/php-opened-in-safari.png)
@@ -180,6 +180,8 @@ PHP supports 'C', 'C++' and Unix shell-style (Perl style) comments. For example:
     echo 'One Final Test'; # This is a one-line shell-style comment
 ?>
 ```
+
+You can also add comments (eg. to "comment out" code in inline PHP tags):
 
 ```php
 <h1>This is an <?php # echo 'easy';?> example</h1>
@@ -632,7 +634,6 @@ phpinfo(INFO_MODULES);
 
 ![](media/phpinfo-1.png)
 
-
 ---
 
 ## MySQL
@@ -649,7 +650,8 @@ MySQL is a component of the LAMP web application software stack (and others), wh
 
 MySQL is used by many database-driven web applications, including Drupal, Joomla, phpBB, and WordPress. 
 
-![bg right:30% width:80%](media/th-1231141522.jpg)
+<!--![](media/th-1231141522.jpg)-->
+<img src="media/th-1231141522.jpg" width="180px">
 
 ## What is a Table?
 
@@ -676,7 +678,7 @@ READ | GET | SELECT
 UPDATE | PUT | UPDATE
 DELETE | DELETE | DELETE
 
-## Some of The Most Important SQL Commands
+## Some of the Most Important SQL Commands
 
 `SELECT` - extracts data from a database
 `UPDATE` - updates data in a database
@@ -703,34 +705,19 @@ Easiest way to try it on your local machine is to run [MAMP](https://www.mamp.in
 
 <!--
 https://hostadvice.com/how-to/how-to-use-phpmyadmin/#paragraph5
-
 https://www.siteground.com/tutorials/phpmyadmin/database-management/
 -->
 
-![bg h:80%](media/MAMP-MySQL.png)
+![](media/MAMP-MySQL.png)
 
-<!--
-_footer: "Running MAMP, scroll down to MySQL for link to phpMyAdmin, info, and code examples for relevant languages, incl. PHP"
--->
+<small>Running MAMP, scroll down to MySQL for link to phpMyAdmin, info, and code examples for relevant languages, incl. PHP.</small>
 
 You can also access phpMyAdmin via the Tools menu:
 
 ![](media/MAMP-toolsmenu.png)
 
-![bg h:80%](media/MAMP-phpmyadmin.png)
-
-<!--_footer: "Default MySQL db setup on MAM"-->
-
-<!--
-
-1. Create DB
-1. Create tables (2 or more)
-1. Query tables
-    1. Simple
-    1. With join
-1. Display result
-
--->
+Default MySQL db setup on MAMP:
+![](media/MAMP-phpmyadmin.png)
 
 ## Practical example: Create a new database
 
@@ -750,7 +737,6 @@ Make your first table by giving it a name and number of columns:
 
 Give the table columns name and [**datatype**](https://www.w3schools.com/mysql/mysql_datatypes.asp) (e.g. varchar, integer, date, etc.):
 
-
 ![](media/create-db-4.png)
 
 **Tip 1**: If you need additional columns, click Add 1 (or more) column(s): 
@@ -764,10 +750,9 @@ Give the table columns name and [**datatype**](https://www.w3schools.com/mysql/m
 Note that here all fields have been set to "Not null", click the "Null" checkbox to allow some of the columns to allow `null` values (eg. FitstName and Address).
 
 
-**Tip 3**: Remember to check A_I to add AUTO INCREMENT to the CustomerId and make it your Primary Key:
+**Tip 3**: Remember to check `A_I` to add AUTO INCREMENT to the CustomerId and make it your **Primary Key**:
 
 ![](media/tip3.png)
-
 
 **Tip 4**: Remember to add Length to all columns with varchar datatype: 
 
@@ -777,7 +762,7 @@ Note that here all fields have been set to "Not null", click the "Null" checkbox
 
 ![](media/tip5.png)
 
-<!--_footer: "Note: Screenshot has FirstName as a possible NULL value, but we've changed that to make LastName as a possible NULL value instead."-->
+<small>Note: Screenshot has FirstName as a possible NULL value, but we've changed that to make LastName as a possible NULL value instead.</small>
 
 Then click the **Save** button, to see the new table's structure:
 
@@ -786,6 +771,8 @@ Then click the **Save** button, to see the new table's structure:
 Go to the SQL tab:
 
 ![h:540px](media/create-db-6.png)
+
+### INSERT INTO
 
 Use SQL to insert your first record, with `INSERT INTO`, and click "Go":
 
@@ -798,16 +785,19 @@ VALUES(
 )
 ```
 
+* `INSERT INTO` customers tells MySQL you want to add a new row to the customers table
+* The column list `(LastName, FirstName, Address, Zip, City)` specifies which fields you are providing values for
+* `VALUES (...)` contains the data to insert, in the same order as the column list
+
+This query adds one new customer with the given name and address details:
+
 ![](media/success.png)
 
 **Did you notice that we did not insert any number into the CustomerId field?**
 The CustomerId column is an *auto-increment field* and will be generated automatically when a new record is inserted into the table.
 
-<!--
-_header: ""
--->
 
-`INSERT` data only in specified columns
+`INSERT` data only in specified columns:
 
 ```sql
 INSERT INTO `customers` (
@@ -818,11 +808,19 @@ VALUES(
 )
 ```
 
+### SELECT
+
 Now, get all records using `SELECT`: 
 
 ```sql
 SELECT * FROM `customers`;
 ```
+
+* `SELECT` tells MySQL you want to retrieve data
+* `*` means “all columns”
+* F`ROM customers` specifies the table to read from
+
+So this query returns every column for every row in the customers table:
 
 ![](media/select1.png)
 
@@ -845,13 +843,15 @@ VALUES
 
 ![](media/success2.png)
 
-Now, if you use a simple `SELECT`, you get all 8 records: 
+Now, if you use a simple `SELECT`, again, you get all 8 records: 
 
 ```sql
 SELECT * FROM `customers`;
 ```
 
 ![h:480px](media/select8.png)
+
+### WHERE
 
 The `WHERE` clause is used to filter records.
 
@@ -862,7 +862,13 @@ SELECT * FROM `customers`
 WHERE FirstName = "Ole";
 ```
 
-![h:380px](media/select-where1.png)
+* `WHERE FirstName = "Ole"` **filters** the result
+
+Only rows where the FirstName column has the value "Ole" are returned:
+
+![](media/select-where1.png)
+
+A few more examples:
 
 ```sql
 SELECT * FROM `customers`
@@ -885,6 +891,10 @@ SELECT * FROM `customers`
 WHERE Zip BETWEEN 5000 AND 5999;
 ```
 
+* `BETWEEN 5000 AND 5999` filters rows by a range
+
+It returns only customers where Zip is 5000 or higher and 5999 or lower (inclusive):
+
 ![](media/select-where4.png)
 
 <br>
@@ -893,12 +903,26 @@ WHERE Zip BETWEEN 5000 AND 5999;
 SELECT * FROM `customers`
 WHERE LastName LIKE "%sen";
 ```
+
+* `LIKE` matches text patterns
+* `%` is a wildcard meaning “any number of characters”
+* `"%sen"` matches values that end with `sen`
+
+So this returns customers whose last name ends in 'sen':
+
 ![](media/select-where5.png)
 
 ```sql
 SELECT * FROM `customers`
 WHERE LastName LIKE "%sen" AND Firstname LIKE "o%";
 ```
+
+* `AND` combines multiple conditions
+* Both conditions must be true for a row to match
+* `"%sen"` matches last names ending in `sen`
+* `"o%"` matches first names starting with `o`
+
+So this returns customers whose last name ends in 'sen':and whose first name starts with 'o':
 
 ![](media/select-where6.png)
 
@@ -914,7 +938,7 @@ WHERE
 
 ![](media/select-where7.png)
 
-<small>
+### Operators, summary
 
 Operator|Description
 ---|---
@@ -928,7 +952,7 @@ Operator|Description
 `LIKE`|[Search for a pattern](https://www.w3schools.com/mysql/mysql_like.asp)
 `IN`|To specify multiple possible values for a column
 
-</small>
+### ORDER BY
 
 The `ORDER BY` keyword is used to sort the result-set in ascending or descending order.
 
@@ -940,10 +964,6 @@ ORDER BY LastName;
 ```
 
 ![h:320px](media/select-where8.png)
-
-<!--
-_header: ""
--->
 
 #### ORDER BY Several Columns
 
@@ -966,7 +986,7 @@ ORDER BY zip DESC;
 
 ![](media/select-where10.png)
 
-#### UPDATE
+### UPDATE
 
 The `UPDATE` statement is used to modify the existing records in a table.
 
@@ -976,6 +996,12 @@ UPDATE `customers`
 SET Firstname = "Lars Erik"
 WHERE CustomerId = 3;
 ```
+
+* `UPDATE customers` tells MySQL you want to change existing data
+* `SET Firstname = "Lars Erik"` specifies the new value
+* `WHERE CustomerId = 3` limits the change to the row with that ID
+
+So this updates the first name of the customer with `CustomerId` 3:
 
 ![](media/update1.png)
 
@@ -987,7 +1013,7 @@ WHERE CustomerId = 8;
 
 ![](media/update2.png)
 
-#### CREATE TABLE
+### CREATE TABLE
 
 Create another table: 
 ```sql
@@ -1000,9 +1026,16 @@ CREATE TABLE `orders` (
 )
 ```
 
+* CREATE TABLE orders creates a new table, with the columns: 
+  * `OrderId int NOT NULL AUTO_INCREMENT` is a unique, automatically increasing ID
+  * `CustomerId int` stores a reference to a customer
+  * `OrderDate date` stores the order date
+* `PRIMARY KEY (OrderId)` makes `OrderId` the unique identifier
+* `FOREIGN KEY (CustomerId) REFERENCES customers(CustomerId)` links each order to a customer in the customers table
+
 PS! The opposite of `CREATE TABLE` is `DROP TABLE`, which _will_ delete the named table!
 
-And make some orders from the SQL-tab: 
+Make some "orders" from the SQL-tab: 
 
 ```sql
 INSERT INTO `orders`(`CustomerId`, `OrderDate`) 
@@ -1021,18 +1054,19 @@ VALUES
     (2,'2025-01-25') 
 ```
 
-Click the the orders table or (if that's chosen already) the **Browse** tab; 
+**Click the the orders table** or (if that's chosen already) the **Browse** tab; 
 
 this is basically the the same as using the `SELECT` query:
 ```sql
 SELECT * FROM `orders`
 ```
+<small>Notice that the SELECT statement is shown when choosing a table via the browse tab:</small>
 
-![height:420px](media/browse.png)
+![](media/browse.png)
 
-Notice how all the CustomerId's are links...
+Tip: All the CustomerId's are links...
 
-<!--_header: ""-->
+A bit more examples:
 
 Filter by date, find any orders older than a given date, using less than `<`: 
 
@@ -1040,37 +1074,35 @@ Filter by date, find any orders older than a given date, using less than `<`:
 SELECT * FROM `orders` WHERE OrderDate < "2025-01-01";
 ```
 
-![h:240px](media/select-date.png)
+![](media/select-date.png)
 
 
-Try the "[ Edit inline ]" link and change to:
+Try the "[ Edit inline ]" link and change from:
 
 ```sql
 SELECT * FROM `orders` WHERE OrderDate >= "2025-01-01";
 ```
 
+...to this:
 ```sql
 SELECT * FROM `orders` WHERE OrderDate >= "2025-01-01" ORDER BY OrderDate DESC;
 ```
 
-#### JOIN
+What happened?
+
+### JOIN
 
 A `JOIN` clause is used to combine rows from two or more tables, based on a related column between them.
-
-<small>
 
 **`INNER JOIN`**: Returns records that have matching values in both tables
 **`LEFT JOIN`**: Returns all records from the left table, and the matched records from the right table
 **`RIGHT JOIN`**: Returns all records from the right table, and the matched records from the left table
 **`CROSS JOIN`**: Returns all records from both tables
 
-</small>
-
 ![](media/joins.png)
+<small>[Source](https://www.w3schools.com/mysql/mysql_join.asp)</small>
 
-<!--
-_footer: "[Source](https://www.w3schools.com/mysql/mysql_join.asp)"
--->
+#### INNER JOIN
 
 MySQL `INNER JOIN` Example:
 
@@ -1082,7 +1114,34 @@ FROM `orders`
 INNER JOIN customers ON orders.CustomerId = customers.CustomerId
 ```
 
-![h:360px](media/inner-join.png)
+What happens:
+* `SELECT orders.OrderId, customers.LastName, customers.FirstName`
+Chooses specific columns from two tables.
+* `FROM orders`
+Starts with the orders table.
+* `INNER JOIN customers ON orders.CustomerId = customers.CustomerId`
+Combines rows from orders and customers where the CustomerId matches in both tables.
+
+Result:
+* One row per order that has a matching customer
+* Each row contains:
+  * the order ID
+  * the customer’s last name
+  * the customer’s first name
+
+Orders without a matching customer are not included.
+
+![](media/inner-join.png)
+
+Sidenote about that result:
+* The result is a **temporary result set**
+* It behaves like a table (rows and columns)
+* It exists **only for the duration of the query**
+* It is **not stored** in the database unless you explicitly save it
+
+You can think of it as a virtual table created by the `SELECT` statement.
+
+#### CONCAT_WS
 
 If you don't need separate first and last name, then use the `CONCAT_WS` function to merge two (or more) columns and `AS` to make an alias:
 
@@ -1092,9 +1151,18 @@ FROM `orders`
 INNER JOIN customers ON orders.CustomerId = customers.CustomerId
 ```
 
+`CONCAT_WS` means “concatenate with separator”.
+Here:
+* `" "` is the separator (a space)
+* `customers.FirstName` and `customers.LastName` are joined together with that space
+* `AS Customer` gives the combined result a column name
+
+So the result shows a Customer column like:
+`Ole Olsen`, `Lars Erik Larsen`, etc., alongside the `OrderId`:
+
 ![h:360px](media/join-concat-as.png)
 
-# Sources and resources
+## Sources and resources
 
 [Getting Started with PHP](https://www.php.net/manual/en/getting-started.php)
 [PHP Language Reference](https://www.php.net/manual/en/langref.php)
@@ -1109,964 +1177,3 @@ INNER JOIN customers ON orders.CustomerId = customers.CustomerId
 
 [PHP Form Handling](https://www.w3schools.com/php/php_forms.asp)
 [PHP MySQL Database](https://www.w3schools.com/php/php_mysql_intro.asp)
-
-## Challenge
-
-Add a footer to the PHP Header example above.
-header: "Development Platforms: 1.3 PHP and MySQL"
-marp: true
-theme: defaultpluss
-size: 16:9
-paginate: true
-# Development Platforms
-
-## Module 1: PHP with MySQL
-
-## Workalong 1
-
-**We are going to connect to the local database we made in the previous lesson.**
-
-Using MAMP for local environment, start by going to `MAMP` > `htdocs` and ***delete (or rename) the `index.php` file and make a (new) folder with an apropriate name***. 
-
-<small>(If you're using XAMPP for Windows, the default folder _should_ be `c:\xampp\htdoc`, but YMMV.)</small>
-
-In your new folder, add an index.php file:
-
-```php
-<?php
-echo "Hello World";
-?>
-```
-
-<!--_header: ""-->
-
-Start up MAMP, and click My Website:
-![](media/mamp-php1.png)
-
-Click on the link with your folder name:
-![](media/mamp-php2.png)
-
-And you find your "Hello World":
-![](media/mamp-php3.png)
-
-<!--
-_footer: "With XAMPP, start Apache and MySQL, and go to `localhost` in your browser"
--->
-
-Now we _should_ be ready. Update your `index.php` file to connect to the database (using the **MAMP boilerplate**, just changing `$db_db` to our `testdb`, or whatever we called it):
-
-<small style="font-size: 1rem">
-
-```php
-<?php
-  $db_host = 'localhost';
-  $db_user = 'root';
-  $db_password = 'root';
-  $db_db = 'testdb';
- 
-  $mysqli = @new mysqli(
-    $db_host,
-    $db_user,
-    $db_password,
-    $db_db
-  );
-	
-  if ($mysqli->connect_error) {
-    echo 'Errno: '.$mysqli->connect_errno;
-    echo '<br>';
-    echo 'Error: '.$mysqli->connect_error;
-    exit();
-  }
-
-  echo 'Success: A proper connection to MySQL was made.';
-  echo '<br>';
-  echo 'Host information: '.$mysqli->host_info;
-  echo '<br>';
-  echo 'Protocol version: '.$mysqli->protocol_version;
-
-  $mysqli->close();
-?>
-```
-
-</small>
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/GgKyVLV?editors=1000). NOTE: Windows users may have to use sligtly different connect code: [Guide](https://jaamaalxyz.medium.com/the-ancient-web-development-setup-php-and-mysql-with-xampp-afc3e147d6e4) or [Alternative](https://www.codewithfaraz.com/article/74/step-by-step-guide-connecting-php-to-mysql-database-with-xampp)"
--->
-
-Success:
-
-![](media/php-to-my-sql-1.png)
-
-Now we can start **_querying_** the database.
-
-A **database query** is a similar action that is most closely associated with some sort of CRUD (create, read, update, delete) function. A database query is a request to access data from a database to manipulate it or retrieve it.
-
-Source: [What is a database query? SQL and NoSQL queries explained](https://www.educative.io/blog/what-is-database-query-sql-nosql)
-
-Comment out the Success part (but not the close-statement), and add the query:
-
-```php
-// echo 'Success: A proper connection to MySQL was made.';
-// echo '<br>';
-// echo 'Host information: '.$mysqli->host_info;
-// echo '<br>';
-// echo 'Protocol version: '.$mysqli->protocol_version;
-
-$sql = "SELECT * FROM customers";
-$result = $mysqli->query($sql);
-
-$output = $result->num_rows;
-
-$mysqli->close();
-```
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/JoPMgqB?editors=1000)"
--->
-
-Then add some HTML to the bottom of the index.php-file (notice the php-tag in the body): 
-
-```html
-$mysqli->close();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testing PHP & MySQL</title>
-</head>
-<body>
-  <h1>Testing PHP & MySQL</h1>
-  <?php echo $output; ?>
-</body>
-</html>
-```
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/YPKYmbg?editors=1000)"
--->
-
-Result: 
-
-![](media/php-to-my-sql-2.png)
-
-We can see the `$output` indicates that there are 8 rows in the `customers` table in the database.
-
-Now let's uptdate the file to make a list of those customers...
-
-```php
-//$output = $result->num_rows;
-$output = "";
-
-if ($result->num_rows > 0) {
-  // output data of each row
-  $output = "<ul>";
-  while($row = $result->fetch_assoc()) {
-    $output .= "<li>id: " . $row["CustomerId"]. " - Name: " . $row["FirstName"]. " " . $row["LastName"]. "</li>";
-  }
-  $output .= "</ul>";
-} else {
-  $output = "<p style='color: red'>0 results</p>";
-}
-```
-
-Use the function `num_rows()` to checks if there are more than zero rows returned.
-
-If there are more than zero rows returned, the function `fetch_assoc()` puts all the results into an associative array that we can loop through. 
-
-The `while()` loop loops through the result set and outputs the data from the id, firstname and lastname columns.
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/KwPZOja?editors=1000)"
--->
-
-
-![h:100%](media/php-to-my-sql-3.png)
-
-Now change the query: 
-
-```php
-  $sql = "SELECT * FROM customers";
-```
-
-to
-
-```php
-  $sql = "SELECT * FROM customers WHERE CustomerId=12";
-```
-
-You should get 0 results: 
-
-![](media/0-results.png)
-
-Now change it back to `$sql = "SELECT * FROM customers";
-`
-
-Note: PHP supports template strings, too. Change the output: 
-
-```php
-    while($row = $result->fetch_assoc()) {
-      // $output .= "<li>id: " . $row["CustomerId"]. " - Name: " . 
-      // $row["FirstName"]. " " . $row["LastName"]. "</li>";
-      $output .= "
-        <li>
-          Customer {$row["CustomerId"]}: 
-          <strong>{$row["FirstName"]} {$row["LastName"]}</strong>, 
-          {$row["Address"]}, 
-          {$row["Zip"]} {$row["City"]}
-        </li>
-      ";  
-    }
-```
-That *could* make the code slightly more readable.
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/ZYzvgdX?editors=1000)"
--->
-
-
-Notice that we don't do anything about `null` vaules at this point: 
-
-![](media/php-to-my-sql-4.png)
-
-> Note: You _should_ fix this, but we're ignoring it for now!
-
-### Searching the database:
-
-Add a small search form to the HTML part of the file:
-
-```php
-  <h1>Testing PHP & MySQL</h1>
-  <form>
-    <label for="q"><input id="q" name="q" placeholder="Search">
-    <button id="submitbtn">Submit</button>
-  </form>
-  <?php echo $output; ?>
-```
-
-![h:120px](media/php-to-my-sql-5.png)
-
-<small>Notice, when you submit this form it goes to the same page, adding a query-string to the URL: http://localhost:8888/PHP-MySQL/?q=dill</small>
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/LEPewKX?editors=1000)"
--->
-
-Lets get that query-string, using the `$_GET` superglobal, and use it in the SQL-query:
-
-```php
-$sql = "SELECT * FROM customers";
-if (isset($_GET["q"])) {
-  $sql .= ' WHERE FirstName LIKE "%{$_GET["q"]}%"';
-} 
-$result = $mysqli->query($sql);
-```
-
-But that didn't quite work as intended, we get an error: 
-
-![](media/php-to-my-sql-6.png)
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/raBpXXp?editors=1000)"
--->
-
-
-Whe use **`var_dump`** to see what's going on <small>(much like console logging variables in JavaScript)</small>:
-
-```php
-var_dump($sql);
-$result = $mysqli->query($sql);
-```
-
-![](media/php-to-my-sql-6b.png)
-
-Here we can see that we have added the `WHERE` clause, but something's gone wrong with the formatting. 
-
-**Templare strings needs double-quotes `"`, and not single `'` as we used**.
-
-So we "swap" the quotes in the string: 
-
-```php
-$sql = "SELECT * FROM customers";
-if (isset($_GET["q"])) {
-  $sql .= " WHERE FirstName LIKE '%{$_GET["q"]}%'";
-} 
-
-var_dump($sql);
-$result = $mysqli->query($sql);
-```
-
-![h:200px](media/php-to-my-sql-6c.png)
-
-So, now it works, and we can comment out the `var_dump`.
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/NPKyKKr?editors=1000)"
--->
-
-For now we've just searched in the `FirstName` column, so lets expand the query to also search the `LastName`, `Address`, `Zip` and `City` columns:
-
-```php
-$sql = "SELECT * FROM customers";
-if (isset($_GET["q"])) {
-  $q = $_GET["q"];
-  $sql .= " WHERE FirstName LIKE '%{$q}%'";
-  $sql .= " OR LastName LIKE '%{$q}%'";
-  $sql .= " OR Address LIKE '%{$q}%'";
-  $sql .= " OR Zip LIKE '%{$q}%'";
-  $sql .= " OR City LIKE '%{$q}%'";
-} 
-$result = $mysqli->query($sql);
-```
-
-![h:150px](media/php-to-my-sql-7.png)
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/LEPQPPX?editors=1000)"
--->
-
-**Think SECURITY when processing PHP forms!**
-
-This page does not contain any form validation, it just shows how you can send and retrieve form data.
-
-Proper validation of form data is important to protect your web application from hackers and spammers!
-
-![h:300px](media/exploits_of_a_mom.png)
-
-<!--
-_backgroundColor: #fed
-_footer: "[327: Exploits of a Mom](https://www.explainxkcd.com/wiki/index.php/327:_Exploits_of_a_Mom), explained"
--->
-
-When getting form data, make sure to "**sanatize**" your data<sup>**</sup>. 
-
-The simplest way is to use the `htmlspecialchars` function to converts special characters to HTML entities. This means that it will replace HTML characters like `<` and `>` with `&lt;` and `&gt;`. This prevents attackers from exploiting the code by injecting HTML or Javascript code (Cross-site Scripting attacks) in forms.
-
-```php
-  //$q = $_GET["q"];
-  $q = htmlspecialchars($_GET["q"]);
-```
-
-Any semicolons `;` will now be changed to `%3B` in the query:
-
-![h:170px](media/php-to-my-sql-8.png)
-
-<!--
-_footer: "<sup>**</sup> **Some - or even most - of these features *MIGHT* be built into your server, but they are 'cheap' to implement, so why not?**"
--->
-
-<small>
-
-We can also do two more things when the user submits the form:
-
-* Strip unnecessary characters (extra space, tab, newline) from the user input data, with the PHP `trim()` function
-* Remove backslashes (`\`) from the user input data, with the PHP `stripslashes()` function
-
-The next step is to create a function that will do all the checking for us (which is much more convenient than writing the same code over and over again).
-
-We will name the function `test_input()`:
-
-</small>
-
-```php
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-```
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/ogvEvNm?editors=1000)"
--->
-
-Then use it: 
-```php
-  //$q = $_GET["q"];
-  //$q = htmlspecialchars($_GET["q"]);
-  $q = test_input($_GET["q"]);
-```
-
-So even if you search for ` \\ole` it will just ignore the space and backslashes:
-
-![](media/php-to-my-sql-8b.png)
-
-### Add data
-
-Start by making another php-file: `addcustomer.php` and make link to that in the index.php-file: 
-
-```html
-  <?php echo $output; ?>
-  <p><a href="./addcustomer.php">Add Customer</a></p>
-</body>
-```
-
-<small style="font-size: 1.4rem">
-
-In `addcustomer.php` add all the same db-stuff as we did in the `index.php` (we'll do something smarter later): 
-
-```php
-<?php
-$db_host = 'localhost';
-$db_user = 'root';
-$db_password = 'root';
-$db_db = 'testdb';
-
-$mysqli = @new mysqli(
-  $db_host,
-  $db_user,
-  $db_password,
-  $db_db
-);
-
-if ($mysqli->connect_error) {
-  echo 'Errno: '.$mysqli->connect_errno;
-  echo '<br>';
-  echo 'Error: '.$mysqli->connect_error;
-  exit();
-}
-
-$mysqli->close();
-?>
-```
-
-</small>
-
-<!--
-_footer: "[Code for copy paste, same as before](https://codepen.io/xiaolasse/pen/GgKyVLV?editors=1000)"
--->
-
-<small style="font-size: 1.3rem">
-
-And add HTML to the same file, with a form:
-
-```php
-$mysqli->close();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Customer</title>
-</head>
-<body>
-    <h1>Add Customer</h1>
-    <form>
-        <label for="firstName">First Name: </label><input id="firstName" name="firstName"><br>
-        <label for="lastName">Last Name: </label><input id="lastName" name="lastName"><br>
-        <label for="address">Address: </label><input id="address" name="address"><br>
-        <label for="zip">Zip: </label><input id="zip" name="zip"><br>
-        <label for="city">City: </label><input id="city" name="city"><br>
-        <button id="submitbtn">Submit</button>
-    </form>
-    <p><a href="./index.php">Back</a></p>
-</body>
-</html>
-```
-
-</smalL>
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/emOVOmy?editors=1000)"
--->
-
-When the form submits, all the data are sent in clear text using `get`.
-
-**NOTE: If you are sending sensitive data, like passwords, you should use `post` instead.**
-
-So let's try that now, even if the data is not sensitive.
-
-Change the form's method: 
-
-```php
-    <form method="post"> 
-```
-
-That also means we cannot use the superglobal `$_GET` to access the form data, but we can use `$_POST`:
-
-```php
-var_dump($_POST);
-
-$mysqli->close();
-```
-
-So if we submit some data: 
-
-![h:230px](media/php-to-my-sql-9a.png)
-
-We get access to those using the `$_POST` superglobal:
-
-![h:230px](media/php-to-my-sql-9b.png)
-
-<small style="font-size: 1.4rem">
-
-So now we pick out the data and add it to the database with an SQL query: 
-
-```php
-if ($_POST) {
-    var_dump($_POST);
-
-    $fn = $ln = $ad = $zi = $ci = ""; 
-    // Initialize some badly named variables
-    
-    $fn = test_input($_POST["firstName"]); 
-    $ln = test_input($_POST["lastName"]); 
-    $ad = test_input($_POST["address"]); 
-    $zi = test_input($_POST["zip"]); 
-    $ci = test_input($_POST["city"]);
-
-    $sql = "INSERT INTO customers (
-        `LastName`, `FirstName`, `Address`, `Zip`, `City`
-    ) VALUES (
-        '{$ln}', '{$fn}', '{$ad}', '{$zi}', '{$ci}'
-    )";
-    var_dump($sql);
-
-    $result = $mysqli->query($sql);
-    var_dump($result);
-}
-```
-
-</small>
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/EaYQYjR?editors=1000)"
--->
-
-**NOTE**: Rember to include the `test_input` function here in `addcustomer.php`, too, since we're using that to sanatize the data from the form. We'll clean that up, as well, a little later.
-
-Then post a new user: 
-
-![](media/php-to-my-sql-10a.png)
-
-
-And if successful: 
-
-![](media/php-to-my-sql-10b.png)
-
-Notice the `bool(true)` in the `var_dump`; then write better feedback messages, and comment out the `var_dump`.
-
-And the database is updated: 
-
-![](media/php-to-my-sql-10c.png)
-
-
-### Cleaning up a bit...
-
-We have some duplicate code in `index.php` and `addcustomer.php`, and we should address that.
-
-So, I make 2 new files, in the same folder: 
-
-`_utils.php` 
-
-and
-
-`_connection.php`
-
-Strictly speacing, we could do with one, but there's a certain logic to put everything<sup>**</sup> related to the database connection in it's own file.
-
-<!--
-_footer: "<sup>**</sup>For one, you could move this file out of you webfolder, and also, I'm not putting _everything_ related to the connection here."
--->
-
-Now, I can cut the `test_input` function from (both) files, and paste it into `_utils.php`:
-
-```php
-<?php
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-?>
-```
-**Remember the `<?php ?>` tags.**
-
-And include it (on top) of both `index.php` and `addcustomer.php`:
-
-```php
-<?php
-include("./_utils.php");
-```
-
-<small>
-
-Repeat this with the database connection code (including error-handling, but NOT the closing statement: `$mysqli->close();`), and paste into `_connect.php` with `<?php ?>` tags:
-
-</small>
-
-```php
-<?php
-$db_host = 'localhost';
-$db_user = 'root';
-$db_password = 'root';
-$db_db = 'testdb';
-
-$mysqli = @new mysqli(
-  $db_host, $db_user, $db_password, $db_db
-);
-  
-if ($mysqli->connect_error) {
-  echo 'Errno: '.$mysqli->connect_errno;
-  echo '<br>';
-  echo 'Error: '.$mysqli->connect_error;
-  exit();
-}
-?>
-```
-
-
-
-Then include the `_connect.php` file in both `index.php` and `addcustomer.php` along side the utilies-include:
-
-```php
-<?php
-include("./_utils.php");
-include("./_connect.php");
-```
-
-Note, all files calling the `_connect.php`, should also have the closing statement just before the end php tag:
-
-```php
-$mysqli->close();
-?>
-```
-
-# Workalong 2: Movies
-
-## Set up local environment
-
-1. Make a project folder.
-1. Set the folder as Document Root in MAMP**
-1. Make an index.php file
-
-> **Note: If you're using XAMPP, changing the root folder can be a bit more of a hassle. Consider using the default `htdoc(s)` folder.
-
-index.php:
-
-```php
-<?php
-$str = "Hello World";
-var_dump($str);
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Movie ratings</title>
-</head>
-<body>
-  <h1>My Movie ratings</h1>
-</body>
-</html>
-```
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/EaYQYVp?editors=1000)"
--->
-
-
-## Set up local environment, cont.
-
-4. Start MAMP and choose Webstart (if it doesn't automatically does this)
-1. Choose Tools > phpMyAdmin
-1. Make a new Database `my_movies`
-1. Create a new table `movies` with 6 columns
-    * `id`, type int(11), auto-incremented, primary key
-    * `title`, type varchar(255)
-    * `year`, type year
-    * `imdb_url`, type varchar(255), can be null
-    * `rt_url`, type varchar(255), can be null
-    * `my_rating`, type tinyint
-
-8. Insert a couple of movies ([IMDb Top 250 Movies](https://www.imdb.com/chart/top)) from phpMyAdmin's SQL window: 
-
-<small style="font-size: 1.15rem">
-
-```sql
-INSERT INTO `movies` (
-    `title`, `year`, `my_rating`
-)
-VALUES
-    ('Blade Runner', '1982', '6'),     
-    ('Blade Runner 2049', '2017', '2'), 
-    ('The Shawshank Redemption', '1994', '6'), 
-    ('The Godfather', '1972', '6'), 
-    ('The Godfather: Part II', '1974', '6'), 
-    ('Pulp Fiction', '1994', '6'), 
-    ('True Romance', '1993', '6'), 
-    ('Avatar', '2009', '3'), 
-    ('Titanic', '1997', '2'), 
-    ('Inception', '2010', '2'), 
-    ('Star Wars: Episode I - The Phantom Menace', '1999', '2'), 
-    ('Star Wars: Episode II - Attack of the Clones', '2002', '3'), 
-    ('Star Wars: Episode III - Revenge of the Sith', '2005', '4'), 
-    ('Star Wars: Episode IV - A New Hope', '1977', '6'), 
-    ('Star Wars: Episode V - The Empire Strikes Back', '1980', '6'), 
-    ('Star Wars: Episode VI - Return of the Jedi', '1983', '5'),     
-    ('Star Wars: Episode VII - The Force Awakens', '2015', '4'), 
-    ('Star Wars: Episode VIII - The Last Jedi', '2017', '2'), 
-    ('Star Wars: Episode IX - The Rise of Skywalker', '2019', '1'), 
-    ('Rogue One', '2016', '5'), 
-    ('Raiders of the Lost Ark', '1981', '6'), 
-    ('Spirited Away', '2001', '6'),     
-    ('The Matrix', '1999', '6')
-```
-
-</small>
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/wBwywMW?editors=1000)"
--->
-9. In your project folder, add a `_connect.php` helper file:
-
-```php
-<?php
-$db_host = 'localhost';
-$db_user = 'root';
-$db_password = 'root';
-$db_db = 'my_movies';
-
-$mysqli = @new mysqli(
-  $db_host, $db_user, $db_password, $db_db
-);
-  
-if ($mysqli->connect_error) {
-  echo 'Errno: '.$mysqli->connect_errno;
-  echo '<br>';
-  echo 'Error: '.$mysqli->connect_error;
-  exit();
-}
-?>
-```
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/qEWxWbL?editors=1000). Note: this code may be slightly different on Windows, look at the SQL-settings on the MAMP web start page/Xammp docs."
--->
-
-10. In the `index.php` file, include the connect-file, make an SQL query, and close the MySQL-connection: 
-```php
-<?php
-include("./_connect.php");
-$sql = "SELECT * FROM movies";
-var_dump($sql);
-$result = $mysqli->query($sql);
-var_dump($result->num_rows);
-
-$mysqli->close();
-?>
-```
-
-11. Run the file, the `int(23)` should reflect the number of movies in your db:
-
-![h:120px](media/my-movies1.png)
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/wBwywGW?editors=1000)."
--->
-
-12. Now get the data from the result: 
-
-```php
-if ($result->num_rows > 0) {
-    $output = "<ul>";
-    while($row = $result->fetch_assoc()) {
-        $output .= "<li>{$row['title']} ({$row['year']})";
-        // URLs coming here
-        $output .= " {$row['my_rating']}</li>";
-    }
-    $output .= "</ul>";
-} else {
-    $output = "<p style='color: red'>No result!</p>";
-}
-```
-
-<small>You should also comment out the `var_dump($sql);` and `var_dump($result->num_rows);`</small>
-
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/emOVOZV?editors=1000)."
--->
-
-13. And place output on the page:
-
-```php
-  <h1>My Movies</h1>
-  <?php echo $output ?>
-```
-
-14. Add sorting to the query and run:
-
-```php
-$sql = "SELECT * FROM movies";
-$sql .= " ORDER BY my_rating DESC, year DESC"; 
-//var_dump($sql);
-```
-
-<br>
-
-![bg right:43% h:100%](media/my-movies2.png)
-
-15. Now add another file `movie.php`, and add a link to it in `index.php`:
-
-```php
-  <h1>My Movies</h1>
-  <?php echo $output ?>
-  <p><a href="movie.php">Add Movie</a></p>
-```
-
-16. Connect `movie.php` to the database and make a form:
-
-<small>
-
-```php
-<?php
-include("./_connect.php");
-
-$mysqli->close();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Movie</title>
-    <style>
-        label { display: inline-block; width: 160px; text-align: right; }
-        label::after { content: ":" }
-    </style>
-</head>
-```
-
-</small>
-
-<!--
-_footer: "[Code for copy paste](https://codepen.io/xiaolasse/pen/jENZNrm?editors=1000) for the complete `movie.php`."
--->
-```php
-<body>
-    <h1>Add Movie</h1> 
-    <form method="post">
-        <label for="title">Title</label>
-        <input id="title" name="title"><br>
-
-        <label for="year">Year</label>
-        <input id="year" name="year" type="number" width="4"><br>
-        
-        <label for="imdb">IMDB url</label>
-        <input id="imdb" name="imdb"><br>
-        
-        <label for="rt">Rotten Tomato URL</label>
-        <input id="rt" name="rt"><br>
-        
-        <label for="rating">My rating</label>
-        <input id="rating" name="rating" type="range" min=1 max=6 step=1 list="ticks">
-        <span id="output"></span><br>
-        
-        <button id="submitBtn">Submit</button>
-    </form>
-</body>
-</html>
-```
-
-17. Add a datalist to form (for the range slider):
-```php
-        ...
-        <datalist id="ticks">
-            <option value="1"></option>
-            <option value="2"></option>
-            <option value="3"></option>
-            <option value="4"></option>
-            <option value="5"></option>
-            <option value="6"></option>
-        </datalist>
-    </form>
-```
-
-18. And a little script to show the value of the range slider:
-```php
-    </form>
-
-    <script>
-        const output = document.querySelector("#output");
-        const input = document.querySelector("#rating");
-        output.textContent = input.value;
-        input.addEventListener("input", (event) => {
-            output.textContent = event.target.value;
-        });
-    </script>
-</body>
-```
-
-19. Now get the `$_POST` superglobal and make `INSERT INTO` query: 
-
-```php
-<?php
-include("./_connect.php");
-
-var_dump($_POST);
-
-if ($_POST) {
-    $title = $_POST['title'];
-    $year = $_POST['year'];
-    $imdb = $_POST['imdb']; 
-    $rt = $_POST['rt'];
-    $rating = $_POST['rating'];
-
-    $fields = "(`title`, `year`, "; 
-    if ($imdb) $fields .= "`imdb_url`, ";
-    if ($rt) $fields .= "`rt_url`, ";
-    $fields .= "`my_rating`)";
-
-    $values = "('{$title}', '{$year}', "; 
-    if ($imdb) $values .= "'{$imdb}', ";
-    if ($rt) $values .= "'{$rt}', ";
-    $values .= "'{$rating}')"; 
-
-    $sql = "INSERT INTO movies $fields VALUES $values";
-    var_dump($sql);
-
-    $result = $mysqli->query($sql);
-    var_dump($result);
-}
-
-$mysqli->close();
-?>
-```
-
-<!--
-If extra time: Add dice using FontAwesome (both using PHP and JS), see movie-example-from-geek
--->
-
-# Todos: MySQL and PHP deployed to Webhotel
-
-<small style="font-size: 1.5rem">
-
-Continue with the project above **(Optional)**:
-
-Requirements:
-* Web host supporting php/mysql, with phpMyAdmin
-* FTP-client (like Cyberduck) for deploying files
-
-Todos:
-1. Export the table from localhost
-2. Make a db on web host via cPanel > phpMyAdmin, and import table
-3. Move files to an appropriate (sub) folder, run it online
-4. Expand on project:
-    * edit movies
-    * delete movies
-
-</small>
