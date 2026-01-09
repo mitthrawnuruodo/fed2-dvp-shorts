@@ -1,5 +1,7 @@
 
-# Introduction to PHP and MySQL and phpMyAdmin with MAMP (or XAMPP)
+# PHP, MySQL and phpMyAdmin
+
+This is a short introduction to the PHP language; and a brief introduction to MySQL using phpMyAdmin through MAMP (or XAMPP).
 
 <!--![](media/337753114_164911129804407_1998992232480221139_n.jpg)-->
 <img src="media/337753114_164911129804407_1998992232480221139_n.jpg" width="390">
@@ -77,22 +79,22 @@ Normally one of two things:
 
 This is because you need to run the PHP file through a web server, one  that supports PHP.
 
-VS Code's Live Server does not support that, so this is where MAMP (XAMPP) comes in, and with the added bonus of including a working MySQL database and phpMyAdmin. More on that later.
+VS Code's Live Server does not support that, and this is where MAMP (XAMPP) comes in, with the added bonus of including a working MySQL database and phpMyAdmin. More on that later.
 
 ## Set up MAMP (or XAMPP)
 
 Download and install [MAMP](https://www.mamp.info/en/mac/) (for Mac) or [XAMPP](https://www.apachefriends.org/download.html) (for Windows and Linux).
 
-Using MAMP for local environment, use Finder and navigate to `MAMP` > `htdocs` and delete the `index.php` file. 
+[Using MAMP for local environment](https://documentation.mamp.info/en/MAMP-Mac/index.html), use Finder and navigate to `MAMP` > `htdocs` and delete the `index.php` file. 
 
-<small>If you're [using XAMPP for Windows](https://www.freecodecamp.org/news/how-to-get-started-with-php/), the default folder _should_ be `c:\xampp\htdoc`, but YMMV.</small>
+If you're [using XAMPP for Windows](https://www.freecodecamp.org/news/how-to-get-started-with-php/), the default folder _should_ be `c:\xampp\htdoc`, but YMMV.
 
 Make a new `index.php` file with the content from the `example.php` file above. 
 
-Now start up MAMP (or XAMMP) and Start Apache.
+Now start up MAMP (or XAMMP) and Start the servers (Apache).
 
 From the `localhost:8888/MAMP/` page Goto "My Website" 
-<small>(or just navigate to `localhost:8888` (MAMP) or `localhost` without the port (XAMPP))</small>
+<small>(or just navigate your browser to `localhost:8888` (MAMP) or `localhost` without the port (XAMPP))</small>
 
 ## "Hello, world" example explained
 
