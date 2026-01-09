@@ -1,7 +1,7 @@
 
 # PHP, MySQL and phpMyAdmin
 
-This is a short introduction to the PHP language; and a brief introduction to MySQL using phpMyAdmin through MAMP (or XAMPP).
+This is a short introduction to the PHP language; and a brief introduction to MySQL using phpMyAdmin, through MAMP (or XAMPP).
 
 <!--![](media/337753114_164911129804407_1998992232480221139_n.jpg)-->
 <img src="media/337753114_164911129804407_1998992232480221139_n.jpg" width="390">
@@ -967,7 +967,7 @@ SELECT * FROM `customers`
 ORDER BY LastName;
 ```
 
-![h:320px](media/select-where8.png)
+![](media/select-where8.png)
 
 #### ORDER BY Several Columns
 
@@ -976,7 +976,7 @@ SELECT * FROM `customers`
 ORDER BY LastName, FirstName;
 ```
 
-![h:320px](media/select-where9.png)
+![](media/select-where9.png)
 
 <small>*Notice how Lars and Ole Olsen changed places.*</small>
 
@@ -1098,10 +1098,10 @@ What happened?
 
 A `JOIN` clause is used to combine rows from two or more tables, based on a related column between them.
 
-**`INNER JOIN`**: Returns records that have matching values in both tables
-**`LEFT JOIN`**: Returns all records from the left table, and the matched records from the right table
-**`RIGHT JOIN`**: Returns all records from the right table, and the matched records from the left table
-**`CROSS JOIN`**: Returns all records from both tables
+* **`INNER JOIN`**: Returns records that have matching values in both tables
+* **`LEFT JOIN`**: Returns all records from the left table, and the matched records from the right table
+* **`RIGHT JOIN`**: Returns all records from the right table, and the matched records from the left table
+* **`CROSS JOIN`**: Returns all records from both tables
 
 ![](media/joins.png)
 <small>[Source](https://www.w3schools.com/mysql/mysql_join.asp)</small>
