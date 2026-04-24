@@ -684,17 +684,19 @@ DELETE | DELETE | DELETE
 
 ## Some of the Most Important SQL Commands
 
-`SELECT` - extracts data from a database
-`UPDATE` - updates data in a database
-`DELETE` - deletes data from a database
-`INSERT INTO` - inserts new data into a database
-`CREATE DATABASE` - creates a new database
-`ALTER DATABASE` - modifies a database
-`CREATE TABLE` - creates a new table
-`ALTER TABLE` - modifies a table
-`DROP TABLE` - deletes a table
-`CREATE INDEX` - creates an index (search key)
-`DROP INDEX` - deletes an index
+| Command | Description |
+|---|---|
+| `SELECT` | Extracts data from a database |
+| `UPDATE` | Updates data in a database |
+| `DELETE` | Deletes data from a database |
+| `INSERT INTO` | Inserts new data into a database |
+| `CREATE DATABASE` | Creates a new database |
+| `ALTER DATABASE` | Modifies a database |
+| `CREATE TABLE` | Creates a new table |
+| `ALTER TABLE` | Modifies a table |
+| `DROP TABLE` | Deletes a table |
+| `CREATE INDEX` | Creates an index (search key) |
+| `DROP INDEX` | Deletes an index |
 
 
 ## phpMyAdmin
